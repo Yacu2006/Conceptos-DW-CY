@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Sistema de solicitudes de préstamo de biblioteca" />
+    <meta name="author" content="Kelly Marin" />
+    <title>Biblioteca - Solicitud de préstamo</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/usb.ico" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet">
+    <!-- Core theme CSS (includes Bootstrap + toggle modo oscuro) -->
+    <link href="../css/styles.css" rel="stylesheet" />
+    <!-- Estilos propios de la biblioteca -->
+    <link href="biblio.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Page content -->
+    <div class="biblioteca-page">
+        <h1>Solicitud de préstamo</h1>
+        <p class="biblioteca-intro">
+            Solicita el préstamo de libros a la biblioteca completando el siguiente formulario. Ingresa tu nombre y los títulos de los libros que deseas solicitar. Al enviar la solicitud, se procesará la información y se mostrará un resumen de tu solicitud.
+        </p>
+        <ol class="biblioteca-reglas">
+            <li>Saca el nombre del usuario (primer elemento).</li>
+            <li>Añade al inicio del array la cadena <code>"Carné de socio"</code>.</li>
+            <li>Añade al final del array el nombre del usuario.</li>
+            <li>Devuelve el array modificado.</li>
+        </ol>
+
+        <form id="solicitud-form" class="ficha">
+            <label class="ficha-label" for="nombre-usuario">Nombre del usuario</label>
+            <input type="text" id="nombre-usuario" class="ficha-input" placeholder="Ej: Kelly Marin" required />
+
+            <label class="ficha-label">Libros solicitados</label>
+            <div id="libros-container"></div>
+
+            <button type="button" id="add-libro" class="ficha-add">+ agregar otro libro</button>
+            <div>
+                <button type="submit" class="ficha-submit">Procesar solicitud</button>
+            </div>
+        </form>
+
+        <div id="resultado">
+            <p class="resultado-vacio">El resultado de la solicitud aparecerá aquí.</p>
+        </div>
+
+        <a class="biblioteca-volver" href="../index.html">&larr; volver al inicio</a>
+    </div>
+
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container px-4 px-lg-5">
+            <p class="m-0 text-center text-white">Copyright &copy; Kelly Marin 2026</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS (toggle modo oscuro + localStorage) -->
+    <script src="../js/scripts.js"></script>
+    <!-- Lógica de la biblioteca -->
+    <script src="biblio.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,259 @@
+/* ============================================================
+   Biblioteca — Solicitud de préstamo
+   Identidad: ficha de papel de catálogo de biblioteca.
+   ============================================================ */
+
+.biblioteca-page {
+    --paper: #f6f1e4;
+    --paper-line: #d8cbb0;
+    --ink: #26211b;
+    --ink-soft: #5a5346;
+    --verde: #2f4a3d;
+    --sello: #a63d2f;
+    --bronce: #b8863b;
+
+    font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 4rem;
+}
+
+.biblioteca-page h1 {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-weight: 700;
+    font-size: 2.35rem;
+    line-height: 1.2;
+    color: var(--verde);
+    margin-bottom: 0.9rem;
+}
+
+.biblioteca-intro {
+    max-width: 62ch;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 1.75rem;
+}
+
+.biblioteca-intro code {
+    background: none;
+    color: var(--sello);
+    font-family: "Space Mono", monospace;
+    font-size: 0.9em;
+}
+
+.biblioteca-reglas {
+    max-width: 60ch;
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 0 0 2.5rem 1.25rem;
+}
+
+.biblioteca-reglas code {
+    background: none;
+    color: var(--sello);
+    font-family: "Space Mono", monospace;
+    font-size: 0.9em;
+}
+
+/* --- La ficha: tarjeta de solicitud estilo papel de catálogo --- */
+.ficha {
+    position: relative;
+    background-color: var(--paper);
+    border: 1px solid var(--paper-line);
+    border-top: 4px solid var(--verde);
+    padding: 2rem 2rem 1.75rem;
+    box-shadow: 3px 3px 0 rgba(38, 33, 27, 0.08);
+    margin-bottom: 2.25rem;
+}
+
+.ficha::after {
+    content: "N.º solicitud";
+    position: absolute;
+    top: -0.55rem;
+    right: 1.5rem;
+    background: var(--paper);
+    padding: 0 0.5rem;
+    font-family: "Space Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    color: var(--bronce);
+}
+
+.ficha-label {
+    display: block;
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 0.95rem;
+    color: var(--verde);
+    margin-bottom: 0.35rem;
+}
+
+.ficha-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--ink-soft);
+    background: transparent;
+    padding: 0.25rem 0.1rem;
+    font-family: "Source Sans 3", sans-serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 1.15rem;
+}
+
+.ficha-input:focus {
+    outline: none;
+    border-bottom: 2px solid var(--verde);
+}
+
+.ficha-input::placeholder {
+    color: #a89f8d;
+}
+
+.libro-input-group {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 1.15rem;
+}
+
+.libro-input-group .ficha-input {
+    margin-bottom: 0;
+}
+
+.remove-libro {
+    border: none;
+    background: none;
+    color: var(--sello);
+    font-family: "Space Mono", monospace;
+    font-size: 0.95rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.2rem 0.3rem;
+}
+
+.remove-libro:hover {
+    text-decoration: underline;
+}
+
+.ficha-add {
+    border: none;
+    background: none;
+    color: var(--verde);
+    font-family: "Space Mono", monospace;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 1.75rem;
+    display: inline-block;
+}
+
+.ficha-add:hover {
+    color: var(--bronce);
+}
+
+.ficha-submit {
+    background: var(--verde);
+    color: var(--paper);
+    border: none;
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 1rem;
+    padding: 0.65rem 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.ficha-submit:hover {
+    background: var(--sello);
+}
+
+.ficha-submit:focus-visible,
+.ficha-input:focus-visible,
+.remove-libro:focus-visible,
+.ficha-add:focus-visible {
+    outline: 2px solid var(--bronce);
+    outline-offset: 2px;
+}
+
+/* --- Resultado: el "sello" estampado --- */
+.resultado-vacio {
+    color: var(--ink-soft);
+    font-style: italic;
+}
+
+.resultado-alerta {
+    color: var(--sello);
+    border-left: 3px solid var(--sello);
+    padding-left: 0.9rem;
+}
+
+.sello {
+    border: 1px dashed var(--bronce);
+    padding: 1.5rem 1.75rem;
+    animation: estampar 0.3s ease-out;
+}
+
+@keyframes estampar {
+    from {
+        opacity: 0;
+        transform: scale(0.96) rotate(-1deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.sello h2 {
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: 1.05rem;
+    color: var(--verde);
+    margin-bottom: 0.5rem;
+}
+
+.resultado-array {
+    font-family: "Space Mono", monospace;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    overflow-x: auto;
+    margin: 0 0 1.25rem;
+}
+
+.resultado-final {
+    font-family: "Space Mono", monospace;
+    font-size: 0.92rem;
+    color: var(--sello);
+    overflow-x: auto;
+    margin: 0;
+}
+
+.biblioteca-volver {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--verde);
+    font-family: "Space Mono", monospace;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.biblioteca-volver:hover {
+    color: var(--sello);
+}
+
+/* --- Modo oscuro (se activa junto con body.active del sitio) --- */
+body.active .biblioteca-page {
+    --paper: #2a2a24;
+    --paper-line: #423f34;
+    --ink: #ece6d6;
+    --ink-soft: #b5ac97;
+    --verde: #8fb89c;
+    --sello: #e07a63;
+    --bronce: #d9b06a;
+}
+
+body.active .ficha {
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+body.active .ficha-submit {
+    color: #1a1a16;
+}
