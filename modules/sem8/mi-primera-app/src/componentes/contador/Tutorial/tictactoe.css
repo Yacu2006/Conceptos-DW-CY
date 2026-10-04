@@ -1,0 +1,233 @@
+.game {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 1.5rem;
+  max-width: 420px;
+  margin: 2rem auto 0;
+  background: linear-gradient(160deg, #1f1b33, #141021);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- Estado del juego (turno / ganador / empate) --- */
+.status {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #cfc7e8;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  background-color: rgba(124, 92, 255, 0.12);
+  border: 1px solid rgba(124, 92, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.status-winner {
+  color: #ffd166;
+  background-color: rgba(255, 209, 102, 0.12);
+  border-color: rgba(255, 209, 102, 0.5);
+}
+
+.status-draw {
+  color: #9a9a9a;
+  background-color: rgba(154, 154, 154, 0.12);
+  border-color: rgba(154, 154, 154, 0.4);
+}
+
+/* --- Tablero --- */
+.game-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.board-row {
+  display: flex;
+  gap: 8px;
+}
+
+.square {
+  width: 64px;
+  height: 64px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #e4defa;
+  background-color: #2a2340;
+  border: 1px solid rgba(124, 92, 255, 0.4);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.square:hover:not(:disabled) {
+  background-color: #352a52;
+  border-color: #9a7dff;
+  transform: translateY(-2px);
+}
+
+.square-X {
+  color: #7c9cff;
+}
+
+.square-O {
+  color: #ff9ecf;
+}
+
+.square-winning {
+  background-color: rgba(255, 209, 102, 0.18);
+  border-color: #ffd166;
+  color: #ffd166;
+  animation: pulse-win 1s ease-in-out infinite;
+}
+
+@keyframes pulse-win {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(255, 209, 102, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(255, 209, 102, 0.7);
+  }
+}
+
+/* --- Historial de movimientos --- */
+.game-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.history-title {
+  color: #9b93c0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0.25rem 0 0;
+}
+
+.game-info ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-height: 160px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.move-button {
+  width: 100%;
+  background-color: transparent;
+  color: #b9a6f5;
+  border: 1px solid rgba(124, 92, 255, 0.3);
+  border-radius: 8px;
+  padding: 0.45rem 1rem;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.move-button:hover {
+  background-color: rgba(124, 92, 255, 0.12);
+  border-color: #9a7dff;
+}
+
+.move-button-active {
+  background-color: rgba(124, 92, 255, 0.2);
+  border-color: #9a7dff;
+  font-weight: 600;
+}
+
+/* --- Botón de reinicio --- */
+.restart-button {
+  background-color: rgba(124, 92, 255, 0.15);
+  color: #cfc7e8;
+  border: 1px solid #7c5cff;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.restart-button:hover {
+  background-color: rgba(124, 92, 255, 0.3);
+}
+
+/* --- Banner de ganador / empate --- */
+.winner-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(10, 8, 20, 0.75);
+  border-radius: 18px;
+  animation: fade-in 0.25s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.winner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(160deg, #2a2340, #1a1530);
+  border: 1px solid #ffd166;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(255, 209, 102, 0.25);
+  animation: pop-in 0.35s ease-out;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.winner-trophy {
+  font-size: 2.75rem;
+  line-height: 1;
+}
+
+.winner-card h2 {
+  color: #ffd166;
+  margin: 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.winner-restart-button {
+  margin-top: 0.5rem;
+  background-color: #ffd166;
+  color: #1a1530;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.winner-restart-button:hover {
+  transform: translateY(-2px);
+}
